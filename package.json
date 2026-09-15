@@ -10,10 +10,12 @@
         "seed": "ts-node scripts/loadDB.ts"
     },
     "dependencies": {
+        "@ai-sdk/react": "^4.0.102",
         "@datastax/astra-db-ts": "^2.3.0",
         "@langchain/core": "^1.2.11",
         "@langchain/mistralai": "^1.2.0",
         "@langchain/textsplitters": "^1.0.1",
+        "ai": "^7.0.99",
         "langchain": "^1.5.11",
         "next": "16.3.5",
         "playwright": "^1.63.0",

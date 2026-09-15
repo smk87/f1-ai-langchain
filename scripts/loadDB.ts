@@ -18,7 +18,11 @@ const {
     MISTRAL_API_KEY,
 } = process.env;
 
-const DATA_SOURCES = ['https://en.wikipedia.org/wiki/Formula_One'];
+const DATA_SOURCES = [
+    'https://en.wikipedia.org/wiki/Formula_One',
+    'https://en.wikipedia.org/wiki/List_of_Formula_One_World_Drivers%27_Champions',
+    'https://www.bbc.com/sport/formula1/articles/c5yeln1j175o',
+];
 const EMBEDDING_BATCH_SIZE = 64;
 const MAX_EMBEDDING_RETRIES = 5;
 const BASE_RETRY_DELAY_MS = 2000;
