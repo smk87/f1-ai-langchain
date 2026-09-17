@@ -1,10 +1,15 @@
 'use client';
 
 import { useChat } from '@ai-sdk/react';
-import { TextStreamChatTransport } from 'ai';
+import { TextStreamChatTransport, UIMessage } from 'ai';
 import { Bubble } from './components/Bubble';
 import { useMemo, useState } from 'react';
 import { LoadingBubble } from './components/LoadingBubble';
+
+export type Message = {
+    role: UIMessage['role'];
+    content: string;
+};
 
 export default function Home() {
     const [input, setInput] = useState('');
@@ -14,13 +19,16 @@ export default function Home() {
                 api: '/api/chat',
                 prepareSendMessagesRequest: ({ messages }) => ({
                     body: {
-                        messages: messages.map((message) => ({
-                            role: message.role,
-                            content:
-                                message.parts[0]?.type === 'text'
-                                    ? message.parts[0].text
-                                    : '',
-                        })),
+                        messages: messages.map(
+                            (message) =>
+                                ({
+                                    role: message.role,
+                                    content:
+                                        message.parts.find(
+                                            (part) => part.type === 'text',
+                                        )?.text ?? '',
+                                }) satisfies Message,
+                        ),
                     },
                 }),
             }),
