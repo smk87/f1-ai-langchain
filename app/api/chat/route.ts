@@ -1,9 +1,13 @@
 import { DataAPIClient } from '@datastax/astra-db-ts';
 import { loadEnvConfig } from '@next/env';
-import { MistralAIEmbeddings } from '@langchain/mistralai';
-import { MistralAI } from '@langchain/mistralai';
-import { PromptTemplate } from '@langchain/core/prompts';
+import { MistralAIEmbeddings, ChatMistralAI } from '@langchain/mistralai';
+import {
+    ChatPromptTemplate,
+    MessagesPlaceholder,
+} from '@langchain/core/prompts';
 import { Message } from '@/app/page';
+import { AIMessage, HumanMessage } from '@langchain/core/messages';
+import { StringOutputParser } from '@langchain/core/output_parsers';
 
 loadEnvConfig(process.cwd());
 
@@ -19,7 +23,7 @@ const {
 const mistral = new MistralAIEmbeddings({
     apiKey: MISTRAL_API_KEY,
 });
-const mistralChat = new MistralAI({
+const mistralChat = new ChatMistralAI({
     apiKey: MISTRAL_API_KEY,
     model: 'ministral-14b-2512',
     temperature: 0.2,
@@ -49,7 +53,7 @@ export async function POST(req: Request) {
                 sort: {
                     $vector: embedding,
                 },
-                limit: 30,
+                limit: 15,
             },
         );
         const documents = await cursor.toArray();
@@ -58,25 +62,19 @@ export async function POST(req: Request) {
         // Create the prompt template with the context
         const template = `You are an AI Assistant for F1 fans. You are able to answer questions about the latest F1 news, drivers, teams, and circuits. You are also able to answer questions about the history of F1. If context doesn't provide the answer, you should answer based on your knowledge or conversation history. And don't mention your source of information or what the context does or doesn't include. For response use markdown where applicable. Keep the answer concise and to the point.
 
-            -- Context --
-            {context}
-            -- Context --
-
-            -- Conversation History --
-            {conversationHistory}
-            -- Conversation History --
-
-            -- Question --
-            {question}
-            -- Question --
+        -- Context --
+        {context}
+        -- Context --
         `;
 
-        const promptTemplate = PromptTemplate.fromTemplate(template);
+        const promptTemplate = ChatPromptTemplate.fromMessages([
+            ['system', template],
+            new MessagesPlaceholder('conversationHistory'),
+            ['human', '{question}'],
+        ]);
         const promptChain = promptTemplate
             .pipe(mistralChat)
-            .pipe((llmResponse: string) =>
-                llmResponse.replaceAll('-- Answer --', ''),
-            );
+            .pipe(new StringOutputParser());
 
         // Stream the response from the LLM
         const stream = await promptChain.stream(
@@ -84,11 +82,13 @@ export async function POST(req: Request) {
                 context: docContext,
                 conversationHistory: messages
                     .slice(0, -1)
-                    .map(
-                        (message: Message) =>
-                            `${message.role}: ${message.content}`,
-                    )
-                    .join('\n'),
+                    .map((message: Message) => {
+                        if (message.role === 'user') {
+                            return new HumanMessage(message.content);
+                        }
+
+                        return new AIMessage(message.content);
+                    }),
                 question: latestMessage.content,
             },
             {

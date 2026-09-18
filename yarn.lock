@@ -585,42 +585,12 @@
     p-queue "^6.6.2"
     zod "^3.25.76 || ^4"
 
-"@langchain/langgraph-checkpoint@^1.1.5":
-  version "1.1.5"
-  resolved "https://registry.npmjs.org/@langchain/langgraph-checkpoint/-/langgraph-checkpoint-1.1.5.tgz"
-  integrity sha512-BwDwl5VeTOh6CVuiIPgsUgfK51vTJDMSbFcSCUfjJWsl8/DPdK/mbv+ejxJstkSk/BlSPMP4JfXWcN6jD2ea2Q==
-
-"@langchain/langgraph-sdk@~1.11.0":
-  version "1.11.0"
-  resolved "https://registry.npmjs.org/@langchain/langgraph-sdk/-/langgraph-sdk-1.11.0.tgz"
-  integrity sha512-Gk6mrCs2fbqKr3luQxVM5ZEcpjK35QO5w/Tr9h/RQPzeKqrsHyPrP4NR9udfgy1ycu7KvvoZ3V0t3beN/edx0g==
-  dependencies:
-    "@langchain/protocol" "^0.0.19"
-    "@types/json-schema" "^7.0.15"
-    p-queue "^9.0.1"
-    p-retry "^7.1.1"
-
-"@langchain/langgraph@^1.4.13":
-  version "1.4.15"
-  resolved "https://registry.npmjs.org/@langchain/langgraph/-/langgraph-1.4.15.tgz"
-  integrity sha512-QG8led1xbFfgikAIF9E5G1Kp1KLtq/xv7YASWy+wnPftQw0Hxu0kpPXl0Q1U2Dfpwb8w/Vfz0QarUR8eI/xtRw==
-  dependencies:
-    "@langchain/langgraph-checkpoint" "^1.1.5"
-    "@langchain/langgraph-sdk" "~1.11.0"
-    "@langchain/protocol" "^0.0.19"
-    "@standard-schema/spec" "1.1.0"
-
 "@langchain/mistralai@^1.2.0":
   version "1.2.0"
   resolved "https://registry.yarnpkg.com/@langchain/mistralai/-/mistralai-1.2.0.tgz#f1820a354a188d42b0d09b8700150f18ed61cc7d"
   integrity sha512-SRtCSDIBzcQc6ZK5qa1V2ZhqSdZomXOt4VzBWXkD//IYYhbMJHhbrlYuCIuHktwpF/1ME5a7Euyk+BujN9hkTA==
   dependencies:
     "@mistralai/mistralai" "2.2.1"
-
-"@langchain/protocol@^0.0.19":
-  version "0.0.19"
-  resolved "https://registry.npmjs.org/@langchain/protocol/-/protocol-0.0.19.tgz"
-  integrity sha512-9hKcRrH7cBX6gfutdfXPoft1OCchHe4FEpALoDJMl5Qu+n/YG5ynZmyu8+8cxORlPwHBoKTxggvXz+76M1yX1Q==
 
 "@langchain/textsplitters@^1.0.1":
   version "1.0.1"
@@ -729,7 +699,7 @@
   resolved "https://registry.npmjs.org/@rtsao/scc/-/scc-1.1.0.tgz"
   integrity sha512-zt6OdqaDoOnJ1ZYsCYGt9YmWzDXl4vQdKTyJev62gFhRGKdx7mcT54V9KIjg+d2wi9EXsPvAPKe7i7WjfVWB8g==
 
-"@standard-schema/spec@1.1.0", "@standard-schema/spec@^1.1.0":
+"@standard-schema/spec@^1.1.0":
   version "1.1.0"
   resolved "https://registry.npmjs.org/@standard-schema/spec/-/spec-1.1.0.tgz"
   integrity sha512-l2aFy5jALhniG5HgqrD6jXLi/rUWrKvqN/qJx6yoJsgKhblVd+iqqU4RCXavm/jPityDo5TCvKMnpjKnOriy0w==
@@ -1959,11 +1929,6 @@ eventemitter3@^4.0.4:
   resolved "https://registry.npmjs.org/eventemitter3/-/eventemitter3-4.0.7.tgz"
   integrity sha512-8guHBZCwKnFhYdHr2ysuRWErTwhoN2X8XELRlrRwpmfeY2jjuUN4taQMsULKUVo1K4DvZl+0pgfyoysHxvmvEw==
 
-eventemitter3@^5.0.4:
-  version "5.0.4"
-  resolved "https://registry.npmjs.org/eventemitter3/-/eventemitter3-5.0.4.tgz"
-  integrity sha512-mlsTRyGaPBjPedk6Bvw+aqbsXDtoAyAzm5MO7JgU+yVRyMQ5O8bD4Kcci7BS85f93veegeCPkL8R4GLClnjLFw==
-
 eventsource-parser@^3.0.8:
   version "3.1.1"
   resolved "https://registry.yarnpkg.com/eventsource-parser/-/eventsource-parser-3.1.1.tgz#b96cbb7dace4f3774f58a9e3b1ae9a4a524872e2"
@@ -2371,11 +2336,6 @@ is-negative-zero@^2.0.3:
   resolved "https://registry.npmjs.org/is-negative-zero/-/is-negative-zero-2.0.3.tgz"
   integrity sha512-5KoIu2Ngpyek75jXodFvnafB6DJgr3u8uuK0LEZJjrU19DrMD3EVERaR8sjz8CCGgpZvxPl9SuE1GMVPFHx1mw==
 
-is-network-error@^1.1.0:
-  version "1.3.2"
-  resolved "https://registry.npmjs.org/is-network-error/-/is-network-error-1.3.2.tgz"
-  integrity sha512-PhBY86zaxNZUuWP6h13Vu5oFe0XY6/UlKzQnYFELzGVHygP3MxmvTfYSG7GN3aIab/iWudSMgjSnG9Dq+nHrgA==
-
 is-number-object@^1.1.1:
   version "1.1.1"
   resolved "https://registry.npmjs.org/is-number-object/-/is-number-object-1.1.1.tgz"
@@ -2561,16 +2521,6 @@ keyv@^4.5.4:
   integrity sha512-oxVHkHR/EJf2CNXnWxRLW6mg7JyCCUcG0DtEGmL2ctUo1PNTin1PUil+r/+4r5MpVgC/fn1kjsx7mjSujKqIpw==
   dependencies:
     json-buffer "3.0.1"
-
-langchain@^1.5.11:
-  version "1.5.11"
-  resolved "https://registry.npmjs.org/langchain/-/langchain-1.5.11.tgz"
-  integrity sha512-6Sx9N5ylAJ11WrP1QnJLSIo75UABZbshzTJgG28H4mXuGcDk+w+7ZaNLkmGIh9sy/3PZcYS8UrI2rvH6A8NYIg==
-  dependencies:
-    "@langchain/langgraph" "^1.4.13"
-    "@langchain/langgraph-checkpoint" "^1.1.5"
-    langsmith ">=0.5.0 <1.0.0"
-    zod "^3.25.76 || ^4"
 
 "langsmith@>=0.5.0 <1.0.0":
   version "0.10.3"
@@ -2925,32 +2875,12 @@ p-queue@6.6.2, p-queue@^6.6.2:
     eventemitter3 "^4.0.4"
     p-timeout "^3.2.0"
 
-p-queue@^9.0.1:
-  version "9.3.3"
-  resolved "https://registry.npmjs.org/p-queue/-/p-queue-9.3.3.tgz"
-  integrity sha512-NXAOdnEe5FsZJfT4oK84lE1Y5cFFdWlRuOo5tww8DyNMxyRXwn39fIkUtNLKppcPC+UYU/bXujNCUGDv01y7CA==
-  dependencies:
-    eventemitter3 "^5.0.4"
-    p-timeout "^7.0.0"
-
-p-retry@^7.1.1:
-  version "7.1.1"
-  resolved "https://registry.npmjs.org/p-retry/-/p-retry-7.1.1.tgz"
-  integrity sha512-J5ApzjyRkkf601HpEeykoiCvzHQjWxPAHhyjFcEUP2SWq0+35NKh8TLhpLw+Dkq5TZBFvUM6UigdE9hIVYTl5w==
-  dependencies:
-    is-network-error "^1.1.0"
-
 p-timeout@^3.2.0:
   version "3.2.0"
   resolved "https://registry.npmjs.org/p-timeout/-/p-timeout-3.2.0.tgz"
   integrity sha512-rhIwUycgwwKcP9yTOOFK/AKsAopjjCakVqLHePO3CC6Mir1Z99xT+R63jZxAT5lFZLa2inS5h+ZS2GvR99/FBg==
   dependencies:
     p-finally "^1.0.0"
-
-p-timeout@^7.0.0:
-  version "7.0.2"
-  resolved "https://registry.npmjs.org/p-timeout/-/p-timeout-7.0.2.tgz"
-  integrity sha512-prbX4Z3YszrFNgH+MW5Zoeq3baXrMtP/MQnFeET90UB/GtGcGDQ5Usg9OCy6ETjTTntOw1SL2z9fMPUppN3Guw==
 
 parent-module@^1.0.0:
   version "1.0.1"
